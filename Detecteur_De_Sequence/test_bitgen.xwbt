@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=E:\test\test.ncd
+OUTFILE=E:\test\test.bit
+FAMILY=Spartan6
+PART=xc6slx16-2csg324
+WORKINGDIR=E:\test
+LICENSE=WebPack
+USER_INFO=210821714_0_0_756

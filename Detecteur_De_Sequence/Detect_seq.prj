@@ -1,0 +1,3 @@
+vhdl work "encod.vhd"
+vhdl work "debounce.vhd"
+vhdl work "Detect_seq.vhd"

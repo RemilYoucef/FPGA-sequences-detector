@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "E:/test/Detect_seq.xst" -ofn "E:/test/Detect_seq.syr" 

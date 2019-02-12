@@ -1,0 +1,658 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Reading design: test.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "test.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "test"
+Output Format                      : NGC
+Target Device                      : xc6slx16-2-csg324
+
+---- Source Options
+Top Module Name                    : test
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "E:\test\encod.vhd" into library work
+Parsing entity <encodeur>.
+Parsing architecture <Behavioral> of entity <encodeur>.
+Parsing VHDL file "E:\test\debounce.vhd" into library work
+Parsing entity <debounce>.
+Parsing architecture <Behavioral> of entity <debounce>.
+Parsing VHDL file "E:\test\diviseur.vhd" into library work
+Parsing entity <diviseur_clk>.
+Parsing architecture <Behavioral> of entity <diviseur_clk>.
+Parsing VHDL file "E:\test\Detect_seq.vhd" into library work
+Parsing entity <Detect_seq>.
+Parsing architecture <Behavioral> of entity <detect_seq>.
+Parsing VHDL file "E:\test\test.vhd" into library work
+Parsing entity <test>.
+Parsing architecture <Behavioral> of entity <test>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <test> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <diviseur_clk> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Detect_seq> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <debounce> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <encodeur> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <test>.
+    Related source file is "E:\test\test.vhd".
+INFO:Xst:3210 - "E:\test\test.vhd" line 65: Output port <clk2hz> of the instance <div> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "E:\test\test.vhd" line 65: Output port <clk16hz> of the instance <div> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <test> synthesized.
+
+Synthesizing Unit <diviseur_clk>.
+    Related source file is "E:\test\diviseur.vhd".
+    Found 22-bit register for signal <cnt2hz>.
+    Found 1-bit register for signal <clk2hz>.
+    Found 1-bit register for signal <div16hz_temp>.
+    Found 19-bit register for signal <cnt16hz>.
+    Found 1-bit register for signal <clk16hz>.
+    Found 1-bit register for signal <div2khz_temp>.
+    Found 12-bit register for signal <cnt2khz>.
+    Found 1-bit register for signal <clk2khz>.
+    Found 1-bit register for signal <div2hz_temp>.
+    Found 22-bit adder for signal <cnt2hz[21]_GND_6_o_add_1_OUT> created at line 28.
+    Found 19-bit adder for signal <cnt16hz[18]_GND_6_o_add_4_OUT> created at line 37.
+    Found 12-bit adder for signal <cnt2khz[11]_GND_6_o_add_7_OUT> created at line 46.
+    Found 22-bit comparator greater for signal <n0000> created at line 23
+    Found 19-bit comparator greater for signal <n0006> created at line 32
+    Found 12-bit comparator greater for signal <n0012> created at line 41
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  59 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+Unit <diviseur_clk> synthesized.
+
+Synthesizing Unit <Detect_seq>.
+    Related source file is "E:\test\Detect_seq.vhd".
+    Found 32-bit register for signal <etatpres>.
+    Found 1-bit register for signal <err>.
+    Found 1-bit register for signal <sor>.
+    Found 32-bit register for signal <xifl.j>.
+    Found 32-bit register for signal <etatsuiv>.
+    Found 32-bit adder for signal <n0048> created at line 95.
+    Found 32-bit adder for signal <xifl.j[31]_GND_7_o_add_8_OUT> created at line 97.
+    Found 32-bit adder for signal <etatpres[31]_GND_7_o_add_16_OUT> created at line 108.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  98 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+Unit <Detect_seq> synthesized.
+
+Synthesizing Unit <debounce>.
+    Related source file is "E:\test\debounce.vhd".
+    Found 1-bit register for signal <Q2>.
+    Found 1-bit register for signal <Q3>.
+    Found 1-bit register for signal <Q1>.
+    Summary:
+	inferred   3 D-type flip-flop(s).
+Unit <debounce> synthesized.
+
+Synthesizing Unit <encodeur>.
+    Related source file is "E:\test\encod.vhd".
+    Summary:
+	no macro.
+Unit <encodeur> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 6
+ 12-bit adder                                          : 1
+ 19-bit adder                                          : 1
+ 22-bit adder                                          : 1
+ 32-bit adder                                          : 3
+# Registers                                            : 26
+ 1-bit register                                        : 20
+ 12-bit register                                       : 1
+ 19-bit register                                       : 1
+ 22-bit register                                       : 1
+ 32-bit register                                       : 3
+# Comparators                                          : 3
+ 12-bit comparator greater                             : 1
+ 19-bit comparator greater                             : 1
+ 22-bit comparator greater                             : 1
+# Multiplexers                                         : 6
+ 32-bit 2-to-1 multiplexer                             : 6
+# Xors                                                 : 4
+ 1-bit xor2                                            : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <diviseur_clk>.
+The following registers are absorbed into counter <cnt2hz>: 1 register on signal <cnt2hz>.
+The following registers are absorbed into counter <cnt16hz>: 1 register on signal <cnt16hz>.
+The following registers are absorbed into counter <cnt2khz>: 1 register on signal <cnt2khz>.
+Unit <diviseur_clk> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 32-bit adder                                          : 2
+ 7-bit adder                                           : 1
+# Counters                                             : 3
+ 12-bit up counter                                     : 1
+ 19-bit up counter                                     : 1
+ 22-bit up counter                                     : 1
+# Registers                                            : 116
+ Flip-Flops                                            : 116
+# Comparators                                          : 3
+ 12-bit comparator greater                             : 1
+ 19-bit comparator greater                             : 1
+ 22-bit comparator greater                             : 1
+# Multiplexers                                         : 6
+ 32-bit 2-to-1 multiplexer                             : 6
+# Xors                                                 : 4
+ 1-bit xor2                                            : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:3002 - This design contains one or more registers/latches that are directly
+   incompatible with the Spartan6 architecture. The two primary causes of this is
+   either a register or latch described with both an asynchronous set and
+   asynchronous reset, or a register or latch described with an asynchronous
+   set or reset which however has an initialization value of the opposite 
+   polarity (i.e. asynchronous reset with an initialization value of 1).
+    While this circuit can be built, it creates a sub-optimal implementation
+   in terms of area, power and performance. For a more optimal implementation
+   Xilinx highly recommends one of the following:
+
+          1) Remove either the set or reset from all registers and latches
+             if not needed for required functionality
+          2) Modify the code in order to produce a synchronous set
+             and/or reset (both is preferred)
+          3) Ensure all registers have the same initialization value as the
+             described asynchronous set or reset polarity
+          4) Use the -async_to_sync option to transform the asynchronous
+             set/reset to synchronous operation
+             (timing simulation highly recommended when using this option)
+
+  Please refer to http://www.xilinx.com search string "Spartan6 asynchronous set/reset" for more details.
+
+  List of register instances with asynchronous set or reset and opposite initialization value:
+    etatpres_31 in unit <Detect_seq>
+
+
+Optimizing unit <test> ...
+
+Optimizing unit <Detect_seq> ...
+WARNING:Xst:2677 - Node <etatsuiv_1> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_2> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_3> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_4> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_5> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_6> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_7> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_8> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_9> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_10> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_11> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_12> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_13> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_14> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_15> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_16> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_17> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_18> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_19> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_20> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_21> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_22> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_23> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_24> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_25> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_26> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_27> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_28> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_29> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_30> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatsuiv_31> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_1> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_2> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_3> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_4> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_5> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_6> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_7> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_8> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_9> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_10> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_11> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_12> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_13> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_14> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_15> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_16> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_17> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_18> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_19> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_20> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_21> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_22> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_23> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_24> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_25> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_26> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_27> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_28> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_29> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_30> of sequential type is unconnected in block <Detect_seq>.
+WARNING:Xst:2677 - Node <etatpres_31> of sequential type is unconnected in block <Detect_seq>.
+
+Optimizing unit <diviseur_clk> ...
+WARNING:Xst:2677 - Node <div/cnt16hz_18> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_17> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_16> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_15> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_14> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_13> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_12> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_11> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_10> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_9> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_8> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_7> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_6> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_5> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_4> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_3> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_2> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_1> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt16hz_0> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_21> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_20> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_19> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_18> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_17> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_16> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_15> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_14> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_13> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_12> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_11> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_10> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_9> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_8> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_7> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_6> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_5> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_4> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_3> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_2> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_1> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/cnt2hz_0> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/clk16hz> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/clk2hz> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/div16hz_temp> of sequential type is unconnected in block <test>.
+WARNING:Xst:2677 - Node <div/div2hz_temp> of sequential type is unconnected in block <test>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block test, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 62
+ Flip-Flops                                            : 62
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : test.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 192
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 11
+#      LUT2                        : 37
+#      LUT3                        : 3
+#      LUT4                        : 1
+#      LUT5                        : 36
+#      LUT6                        : 13
+#      MUXCY                       : 42
+#      VCC                         : 1
+#      XORCY                       : 45
+# FlipFlops/Latches                : 62
+#      FD                          : 49
+#      FDC                         : 1
+#      FDR                         : 12
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 7
+#      IBUF                        : 5
+#      OBUF                        : 2
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              62  out of  18224     0%  
+ Number of Slice LUTs:                  103  out of   9112     1%  
+    Number used as Logic:               103  out of   9112     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    117
+   Number with an unused Flip Flop:      55  out of    117    47%  
+   Number with an unused LUT:            14  out of    117    11%  
+   Number of fully used LUT-FF pairs:    48  out of    117    41%  
+   Number of unique control sets:         4
+
+IO Utilization: 
+ Number of IOs:                           8
+ Number of bonded IOBs:                   8  out of    232     3%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+div/clk2khz                        | BUFG                   | 48    |
+clk                                | BUFGP                  | 14    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 6.074ns (Maximum Frequency: 164.636MHz)
+   Minimum input arrival time before clock: 7.885ns
+   Maximum output required time after clock: 4.202ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'div/clk2khz'
+  Clock period: 6.074ns (frequency: 164.636MHz)
+  Total number of paths / destination ports: 2649 / 44
+-------------------------------------------------------------------------
+Delay:               6.074ns (Levels of Logic = 5)
+  Source:            detect/deb4/Q3 (FF)
+  Destination:       detect/sor (FF)
+  Source Clock:      div/clk2khz rising
+  Destination Clock: div/clk2khz rising
+
+  Data Path: detect/deb4/Q3 to detect/sor
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.525   0.910  detect/deb4/Q3 (detect/deb4/Q3)
+     LUT3:I0->O            3   0.235   0.994  detect/deb4/Q_OUT1 (detect/r<3>)
+     LUT6:I3->O            3   0.235   0.994  detect/encod/b<1>1 (detect/b<1>)
+     LUT6:I3->O            1   0.235   0.682  detect/gs_b[1]_AND_17_o1_1 (detect/gs_b[1]_AND_17_o1)
+     LUT4:I3->O            1   0.254   0.682  detect/_n00748_SW2 (N9)
+     LUT6:I5->O            1   0.254   0.000  detect/sor_glue_set (detect/sor_glue_set)
+     FD:D                      0.074          detect/sor
+    ----------------------------------------
+    Total                      6.074ns (1.812ns logic, 4.262ns route)
+                                       (29.8% logic, 70.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.101ns (frequency: 243.843MHz)
+  Total number of paths / destination ports: 171 / 26
+-------------------------------------------------------------------------
+Delay:               4.101ns (Levels of Logic = 2)
+  Source:            div/cnt2khz_6 (FF)
+  Destination:       div/cnt2khz_11 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: div/cnt2khz_6 to div/cnt2khz_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.525   0.834  div/cnt2khz_6 (div/cnt2khz_6)
+     LUT2:I0->O            1   0.250   0.682  div/n0012_inv_SW0 (N4)
+     LUT6:I5->O           13   0.254   1.097  div/n0012_inv (div/n0012_inv)
+     FDR:R                     0.459          div/cnt2khz_0
+    ----------------------------------------
+    Total                      4.101ns (1.488ns logic, 2.613ns route)
+                                       (36.3% logic, 63.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'div/clk2khz'
+  Total number of paths / destination ports: 1202 / 40
+-------------------------------------------------------------------------
+Offset:              7.885ns (Levels of Logic = 7)
+  Source:            reset (PAD)
+  Destination:       detect/sor (FF)
+  Destination Clock: div/clk2khz rising
+
+  Data Path: reset to detect/sor
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            72   1.328   2.100  reset_IBUF (reset_IBUF)
+     LUT2:I0->O            1   0.250   0.000  detect/Madd_xifl.j[31]_GND_7_o_add_8_OUT_lut<0> (detect/Madd_xifl.j[31]_GND_7_o_add_8_OUT_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  detect/Madd_xifl.j[31]_GND_7_o_add_8_OUT_cy<0> (detect/Madd_xifl.j[31]_GND_7_o_add_8_OUT_cy<0>)
+     XORCY:CI->O           2   0.206   1.156  detect/Madd_xifl.j[31]_GND_7_o_add_8_OUT_xor<1> (detect/xifl.j[31]_GND_7_o_add_8_OUT<1>)
+     LUT6:I1->O            1   0.254   0.682  detect/_n00741 (detect/_n00741)
+     LUT6:I5->O            1   0.254   1.112  detect/_n00742 (detect/_n00742)
+     LUT6:I1->O            1   0.254   0.000  detect/sor_glue_set (detect/sor_glue_set)
+     FD:D                      0.074          detect/sor
+    ----------------------------------------
+    Total                      7.885ns (2.835ns logic, 5.050ns route)
+                                       (36.0% logic, 64.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'div/clk2khz'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              4.202ns (Levels of Logic = 1)
+  Source:            detect/sor (FF)
+  Destination:       sor (PAD)
+  Source Clock:      div/clk2khz rising
+
+  Data Path: detect/sor to sor
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.525   0.765  detect/sor (detect/sor)
+     OBUF:I->O                 2.912          sor_OBUF (sor)
+    ----------------------------------------
+    Total                      4.202ns (3.437ns logic, 0.765ns route)
+                                       (81.8% logic, 18.2% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.101|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock div/clk2khz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+div/clk2khz    |    6.074|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.68 secs
+ 
+--> 
+
+Total memory usage is 4478348 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  108 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+
